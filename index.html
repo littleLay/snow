@@ -6,79 +6,63 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
     <script src="jquery-3.2.1.min.js"></script>
+    <script src="gaussBlur.js"></script>
+    <link rel="stylesheet" href="index.css"  type="text/css">
     <title>Document</title>
-    <style>
-        body{
-            background-color: pink;
-        }
-        #app{
-            width: 100%;
-            height: 100vh;
-        }
-        #app .start{
-            width: 100px;
-            height: 100px;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            background-image: url("cheesemoon.png");
-            background-size: 100px 100px;
-            /* background-color: black; */
-        }
-        #app .content{
-            
-        }
-        .picShow{
-            height: 500px;
-            width: 500px;
-        }
-    </style>
 </head>
 <body>
-    
-    <script type = "text/javascript" src="./snow.js"></script>
-    <script src="./index.json"></script>
 
     <div id="app">
-            <div class="start">
-                <img src="" v-on:click="show">
-            </div>
-            <div class="content">
-                <ul v-bind:class="picShow : isShow">
-                    <li v-for="item in pic">
-                        <img v-for="item in pic" src="item.name" v-bind:class="picShow : isShow">
-                    </li>
-                </ul>
-            </div>
+        <div class="start">
+            <img src="" v-on:click="show">
+        </div>
+        <div class="content">
+            <ul>
+                <li v-for="item in pic">
+                    <img v-bind:style="{src : item.name}" v-bind:class="picShow : item.isShow">
+                </li>
+            </ul>
+            
+        </div>
     </div>
-
+    <div class="btn">
+        <img src="ml.png">
+    </div>
+    
     <script>
-        function successFn(data){
-            vm.data.pic = data;
-        }
-        function getData(url){
-            $.ajax({
-                type : "GET",
-                url : url,
-                success : successFn
-            })
-        }
-        var content = $(".content");
+        // var ml = $('btn').on('click',function(){
 
+        // });
+        
         var vm = new Vue({
             el : "#app",
             data : {
-                pic : [],
-                isShow : false
-            },
-            methods : {
-                show : function() {
-                    isShow = !isShow;
-                }
+                pic : {}
             }
         });
-        console.log(vm.pic);
+        function indexDemo(result){
+            vm.pic = result;
+            // console.log(typeof(result));
+            console.log(vm.pic);
+        }
+        function act(){
+            var index = 0;
+            setInterval(function(){
+                if(index <=16){
+                    vm.pic[index].isShow = "true";
+                    for(var i = 0; i < 16; i++){
+                        if(i != index){
+                            vm.pic[i].isShow = "false";
+                        }
+                    }
+                }
+                index++;
+            },1500);
+        }
+
+
     </script>
-    
+    <script type = "text/javascript" src="./snow.js"></script>
+    <script type="text/javascript" src="index.json?callback=indexDemo"></script>
 </body>
 </html>

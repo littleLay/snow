@@ -1,0 +1,38 @@
+indexDemo([
+    {
+        "name":"0.jpg",
+        "isShow" : "false"
+    },
+    {
+        "name":"1.jpeg",
+        "isShow" : "false"
+    },
+    {
+        "name":"2.jpg",
+        "isShow" : "false"
+    },
+    {
+        "name":"3.jpg",
+        "isShow" : "false"
+    },
+    {
+        "name":"4.jpeg",
+        "isShow" : "false"
+    },
+    {
+        "name":"5.jpg",
+        "isShow" : "false"
+    },
+    {
+        "name":"6.jpg",
+        "isShow" : "false"
+    },
+    {
+        "name":"7.jpg",
+        "isShow" : "false"
+    },
+    {
+        "name":"8.jpg",
+        "isShow" : "false"
+    }
+])

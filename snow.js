@@ -72,21 +72,21 @@ var snow = {
         var _this = this;
         setInterval(function() {
             var snowP = document.createElement('div');
-            var size = parseInt(Math.random() * 4 )+4;
+            var size = parseInt(Math.random() * 4 ) + 6;
         
             snowP.style.zIndex = 100;
             snowP.style.position = 'fixed';
-            snowP.style.top = -50 + 'px';
+            snowP.style.top = -size + 'px';
             snowP.style.left = parseInt(Math.random() * document.body.clientWidth) + _this.createSnowOffset + 'px';
-            // snowP.style.width = size + 'px';
-            // snowP.style.height = size + 'px';
-            snowP.style.width = 50 + 'px';
-            snowP.style.height = 50 + 'px';
+            snowP.style.width = size + 'px';
+            snowP.style.height = size + 'px';
+            // snowP.style.width = 50 + 'px';
+            // snowP.style.height = 50 + 'px';
             snowP.style.borderRadius = '100%';
-            snowP.style.backgroundImage = "url(strew.png)";
+            // snowP.style.backgroundImage = "url(strew.png)";
             snowP.style.backgroundSize = '50px 50px';
-            // snowP.style.backgroundColor = '#fff';
-            
+            snowP.style.backgroundColor = '#fff';
+            snowP.style.filter = "blur(2px)";
             _this.wrap.appendChild(snowP);
             _this.move(snowP,Math.random() * 1.5 - 1);  
         }, parseInt(Math.random() * 1500 + 400));
