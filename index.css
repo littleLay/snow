@@ -1,5 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 body{
-    background-color: #9B30FF;
+    background-color: #CAE1FF;
+    
     box-sizing: border-box;
     width: 90%;
     height: 90%;
@@ -14,6 +19,32 @@ body:after{
     background: inherit;
     filter: blur(100px);
 }
+
+#app{
+    margin: 2px 2px;
+    width: 100vw;
+    height: 90vh;
+    /* background-color: #FFBB46; */
+}
+/* 使图片显示的样式 */
+.content{
+    height: 90vh;
+    width: 100vw;
+    margin: 0 auto;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100vw 90vh;
+}
+.image{
+    align-content: center;
+    height: 90vh;
+    width: 100vw;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: 100vw 90vh;
+}
+
+/* 麋鹿图标的样式 */
 .btn img{
     position: absolute;
     top: 90vh;
@@ -21,21 +52,12 @@ body:after{
     height: 100px;
     width: 100px;
     background-size: 100px 100px;
-    transform:translate(-50%,-50%);
+    transform:translate(50%,-50%);
     border-radius: 100%;
     background: inherit;
     z-index: 10;
     box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.5);
 }
-#app{
-    width: 100%;
-    height: 100vh;
-}
-.picShow{
-    height: 90vh;
-    width: 80%;
-    margin: 0 auto;
-    background-size: 90vh;
-    width: 80%;
-    
-}
+
+
+

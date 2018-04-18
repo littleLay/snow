@@ -11,18 +11,10 @@
     <title>Document</title>
 </head>
 <body>
-
+    <audio src="MP3.mp3" id="Audio"></audio>
     <div id="app">
-        <div class="start">
-            <img src="" v-on:click="show">
-        </div>
         <div class="content">
-            <ul>
-                <li v-for="item in pic">
-                    <img v-bind:style="{src : item.name}" v-bind:class="picShow : item.isShow">
-                </li>
-            </ul>
-            
+            <img class="image">
         </div>
     </div>
     <div class="btn">
@@ -30,37 +22,45 @@
     </div>
     
     <script>
-        // var ml = $('btn').on('click',function(){
-
-        // });
-        
+        window.onload=function(){
+            var temp = document.getElementById('Audio');
+            temp.play();
+        }
         var vm = new Vue({
             el : "#app",
             data : {
-                pic : {}
+                pic : []
             }
         });
         function indexDemo(result){
             vm.pic = result;
             // console.log(typeof(result));
             console.log(vm.pic);
+            console.log(typeof(vm.pic));
         }
+        
         function act(){
             var index = 0;
             setInterval(function(){
-                if(index <=16){
-                    vm.pic[index].isShow = "true";
+                if(index <= 15){
+                    $(".content").addClass("picShow");
                     for(var i = 0; i < 16; i++){
-                        if(i != index){
-                            vm.pic[i].isShow = "false";
+                        if(i == index){
+                            $(".image").attr("src",vm.pic[i].name).fadeIn(2000);
+                            $(".image").attr("src",vm.pic[i].name).fadeToggle(2000);
                         }
+                        console.log(i)
                     }
                 }
-                index++;
-            },1500);
+                if(index > 8){
+                    index = 0;
+                }else{
+                    index++;
+                }
+                
+            },4500);
         }
-
-
+        act();
     </script>
     <script type = "text/javascript" src="./snow.js"></script>
     <script type="text/javascript" src="index.json?callback=indexDemo"></script>
