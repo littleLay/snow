@@ -35,11 +35,17 @@ body:after{
     background-repeat: no-repeat;
     background-size: 100vw 90vh;
 }
-.image{
-    align-content: center;
+.start{
+    display: none;
     height: 90vh;
     width: 100vw;
-    margin: 0 auto;
+}
+img{
+    display: inline-block;
+    align-content: center;
+    height: 90vh;
+    width: 99vw;
+    margin-left: 10px;
     background-repeat: no-repeat;
     background-size: 100vw 90vh;
 }

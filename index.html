@@ -14,12 +14,13 @@
     <audio src="MP3.mp3" id="Audio"></audio>
     <div id="app">
         <div class="content">
-            <img class="image">
+            <img v-for="item in pic" :src="item.name" v-bind:class="{ start : !item.isShow}">
+        </div>
+        <div class="btn">
+            <img src="ml.png"  v-on:click="showPic">
         </div>
     </div>
-    <div class="btn">
-        <img src="ml.png">
-    </div>
+    
     
     <script>
         window.onload=function(){
@@ -29,38 +30,57 @@
         var vm = new Vue({
             el : "#app",
             data : {
+                index : 0,
                 pic : []
+            },
+            methods : {
+                showPic : function(){
+                    if(vm.index < 17){
+                        for(var i = 0; i < 17; i++){
+                            vm.pic[i].isShow = false;
+                        }
+                        vm.pic[vm.index].isShow = true;
+                        $(".image").attr("src",vm.pic[vm.index].name).fadeIn(2000);
+                        $(".image").attr("src",vm.pic[vm.index].name).fadeToggle(2000);
+                        vm.index++;
+                    }else{
+                        vm.index = 0;
+                    }
+                }
             }
         });
         function indexDemo(result){
             vm.pic = result;
+            for(var i = 0; i < 15; i++){
+                vm.pic[i].isShow = false;
+            }
             // console.log(typeof(result));
             console.log(vm.pic);
             console.log(typeof(vm.pic));
         }
         
-        function act(){
-            var index = 0;
-            setInterval(function(){
-                if(index <= 15){
-                    $(".content").addClass("picShow");
-                    for(var i = 0; i < 16; i++){
-                        if(i == index){
-                            $(".image").attr("src",vm.pic[i].name).fadeIn(2000);
-                            $(".image").attr("src",vm.pic[i].name).fadeToggle(2000);
-                        }
-                        console.log(i)
-                    }
-                }
-                if(index > 8){
-                    index = 0;
-                }else{
-                    index++;
-                }
+        // function act(){
+        //     var index = 0;
+        //     setInterval(function(){
+        //         if(index <= 15){
+        //             $(".content").addClass("picShow");
+        //             for(var i = 0; i < 16; i++){
+        //                 if(i == index){
+        //                     $(".image").attr("src",vm.pic[i].name).fadeIn(2000);
+        //                     $(".image").attr("src",vm.pic[i].name).fadeToggle(2000);
+        //                 }
+        //                 console.log(i)
+        //             }
+        //         }
+        //         if(index > 8){
+        //             index = 0;
+        //         }else{
+        //             index++;
+        //         }
                 
-            },4500);
-        }
-        act();
+        //     },4500);
+        // }
+        // act();
     </script>
     <script type = "text/javascript" src="./snow.js"></script>
     <script type="text/javascript" src="index.json?callback=indexDemo"></script>
